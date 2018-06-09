@@ -1,8 +1,8 @@
 const express = require('express')
 const hbs = require('express-handlebars')
 const defaultrouter = require('./routes/defaultroute.js')
-const getrouter = require('./routes/getroute.js')
-const postrouter = require('./routes/postroute.js')
+// const getrouter = require('./routes/getroute.js')
+// const postrouter = require('./routes/postroute.js')
 
 const server = express()
 // register template engine
@@ -17,7 +17,7 @@ server.use(express.static('public')) // set default htdoc directory
 server.use(express.urlencoded({extended: false}))
 
 server.use('/', defaultrouter)
-server.use('/', getrouter)
-server.use('/', postrouter)
+// server.use('/', getrouter)
+// server.use('/', postrouter)
 
 module.exports = server
