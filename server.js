@@ -12,7 +12,7 @@ server.engine('hbs', hbs({
 }))
 
 server.set('view engine', 'hbs') // server.engine is default view engine
-server.use(express.static('public')) // set default htdoc directory
+server.use(express.static('public')) // set default directory for css, images dir
 // It parses incoming requests with urlencoded payloads and is based on body-parser.
 server.use(express.urlencoded({extended: false}))
 

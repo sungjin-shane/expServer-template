@@ -1,7 +1,7 @@
 body {
-  background-color: #FFCCCC;
-  font-family: 'Spirax', cursive;
-}
+  background-color: rgb(235, 235, 241);
+  font-family: Arial, Helvetica, sans-serif;
+} 
 
 .container {
   display: flex;
