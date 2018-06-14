@@ -1,23 +1,40 @@
+// const express = require('express')
+// const hbs = require('express-handlebars')
+// const defaultrouter = require('./routes/defaultroute.js')
+
+// const server = express()
+// // register template engine
+// server.engine('hbs', hbs({
+//   defaultlayout: 'main',
+//   extname: 'hbs' // .hbs
+// }))
+
+// server.set('view engine', 'hbs')
+// server.use(express.static('public'))
+// server.use(express.urlencoded({extended: false}))
+
+// server.use('/', defaultrouter)
+
+// module.exports = server
+
 const express = require('express')
+const bodyParser = require('body-parser')
 const hbs = require('express-handlebars')
-const defaultrouter = require('./routes/defaultroute.js')
-// const getrouter = require('./routes/getroute.js')
-// const postrouter = require('./routes/postroute.js')
+
+const routes = require('./routes')
 
 const server = express()
-// register template engine
+
+// Middleware
 server.engine('hbs', hbs({
-  defaultlayout: 'main', // in the views/layouts directory
-  extname: 'hbs' // .hbs
+  extname: 'hbs',
+  defaultLayout: 'main'
 }))
+server.set('view engine', 'hbs')
+server.use(express.static('public'))
+server.use(bodyParser.urlencoded({extended: true}))
 
-server.set('view engine', 'hbs') // server.engine is default view engine
-server.use(express.static('public')) // set default directory for css, images dir
-// It parses incoming requests with urlencoded payloads and is based on body-parser.
-server.use(express.urlencoded({extended: false}))
-
-server.use('/', defaultrouter)
-// server.use('/', getrouter)
-// server.use('/', postrouter)
+// Routes
+server.use('/', routes)
 
 module.exports = server
